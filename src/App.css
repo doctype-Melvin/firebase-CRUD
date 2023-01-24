@@ -51,3 +51,23 @@ html, body, #root {
 #create, #render, #update, #delete {
   font-size: 3vw;
 }
+
+#content, .formContainer {
+  display: flex;
+  justify-content: center;
+
+}
+
+.formContainer {
+  flex-direction: column;
+  max-width: 15vw;
+}
+
+.formContainer > label,
+.formContainer > input {
+  margin-bottom: 15px;
+}
+
+.formContainer > button {
+  font-size: 1vw;
+}
