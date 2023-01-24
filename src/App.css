@@ -55,6 +55,7 @@ html, body, #root {
 #content, .formContainer {
   display: flex;
   justify-content: center;
+  align-items: center;
 
 }
 
@@ -70,4 +71,12 @@ html, body, #root {
 
 .formContainer > button {
   font-size: 1vw;
+}
+
+.entry {
+  margin-right: 20px;
+  min-width: 8vw;
+  padding: 10px;
+  background-color: aliceblue;
+  box-shadow: 0 0 5px 1px rgba(187, 187, 187, 0.514);
 }

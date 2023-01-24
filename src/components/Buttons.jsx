@@ -1,17 +1,22 @@
 import React from "react";
+import Entry from "./Entry";
 
 export default function Buttons(props) {
 
     const createData = () => {
         props.setEntry(prevState => !prevState)
+        if (props.render) props.setRender(prevState => !prevState)
     }
 
     const renderData = () => {
-        console.log('Render')
+        console.log(props.dataArray)
+        props.setRender(prevState => !prevState)
+        if (props.entry) props.setEntry(prevState => !prevState)
     }
 
     const updateData = () => {
-        console.log('Update')
+        console.log(props.dataArray)
+        
     }
 
     const deleteData = () => {
