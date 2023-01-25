@@ -1,12 +1,13 @@
 import React from "react";
 
-export default function Entry({ field1, field2, field3 }) {
+export default function Entry(props) {
+    console.log(props.field1)
     return (
         <>
             <div className="entry">
-                <div>{field1}</div>
-                <div>{field2}</div>
-                <div>{field3}</div>
+                <div>{props.field1}</div>
+                <div>{props.field2}</div>
+                <div>{props.field3}</div>
             </div>
         </>
     )

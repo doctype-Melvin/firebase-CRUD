@@ -12,6 +12,7 @@ export default function Root() {
     const [ render, setRender ] = useState(false) // Render entries
 
     const mapper = dataArray.map(item => <Entry
+        key={item.id}
         field1={item.field1}
         field2={item.field2}
         field3={item.field3}

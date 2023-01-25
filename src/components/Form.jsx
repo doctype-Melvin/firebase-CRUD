@@ -1,3 +1,4 @@
+import { nanoid } from "nanoid";
 import React, {useState} from "react";
 
 export default function Form(props) {
@@ -13,11 +14,13 @@ export default function Form(props) {
         const { name, value } = e.target
         setData(prevData => ({
             ...prevData,
-            [name]: value
+            [name]: value,
+            id: nanoid()
         }))
     }
     
     const submitHandler = () => { // Send to database
+        
         console.log(data)
         props.setDataArray(prevState => [...prevState, data])
     }
