@@ -1,63 +1,40 @@
+import React, { useState } from "react";
 import { nanoid } from "nanoid";
-import React, {useState} from "react";
 
 export default function Form(props) {
 
     const [ data, setData ] = useState({
-        field1: '',
-        field2: '',
-        field3: ''
+        id: nanoid()
     })
 
     const changeHandler = (e) => {
-        console.log(e.target.value)
-        const { name, value } = e.target
-        setData(prevData => ({
-            ...prevData,
-            [name]: value,
-            id: nanoid()
-        }))
+        const {name, value} = e.target
+        setData(
+            {
+                ...data,
+                [name]: value,
+            }
+            )
     }
-    
-    const submitHandler = () => { // Send to database
-        
-        console.log(data)
-        props.setDataArray(prevState => [...prevState, data])
+
+    const submit = () => {
+        props.toDb(data)
     }
 
     return (
-    <div className="formContainer">
-        <label htmlFor="field1"
-        
-        >Field 1: 
-        <input 
-        type="text"
-        onChange={changeHandler}
-        value={data.field1}
-        name="field1"
-        /></label>
-        <label htmlFor="field2"
-        
-        >Field 2: 
-        <input 
-        type="text"
-        onChange={changeHandler}
-        value={data.field2}
-        name="field2"
-        /></label>
-        <label htmlFor="field3"
-        
-        >Field 3: 
-        <input 
-        type="text"
-        onChange={changeHandler}
-        value={data.field3}
-        name="field3"
-        /></label>
-        <button 
-        type="button"
-        onClick={submitHandler}
-        >Send</button>
-    </div>
+        <div className="formCt">
+            <form className="formEl">
+                <label htmlFor="input1">First: 
+                <input type="text" name="input1" onChange={changeHandler}></input>
+                </label>
+                <label htmlFor="input1">Second: 
+                <input type="text" name="input2" onChange={changeHandler}></input>
+                </label>
+                <label htmlFor="input1">Third:
+                <input type="text" name="input3" onChange={changeHandler}></input>
+                </label>
+                <button type="button" className="send" onClick={submit}>Send</button>
+            </form>
+        </div>
     )
 }

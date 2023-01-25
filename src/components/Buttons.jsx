@@ -1,37 +1,25 @@
 import React from "react";
 
 export default function Buttons(props) {
-
     const createData = () => {
-        props.setEntry(prevState => !prevState)
-        if (props.render) props.setRender(prevState => !prevState)
+        props.setWrite(prev => !prev)
     }
 
     const renderData = () => {
-        console.log(props.dataArray)
-        props.setRender(prevState => !prevState)
-        if (props.entry) props.setEntry(prevState => !prevState)
+        console.log('Show data!')
     }
 
-    
-
     return (
-        <>
-        <div className="buttonControl">
+        <div className="buttons">
             <button 
             type="button"
-            id="create"
-            onClick={createData}>
-            Create
+            onClick={createData}
+            >Create
             </button>
             <button 
             type="button"
-            id="render"
             onClick={renderData}
-            >
-            Render
-            </button>
+            >Show</button>
         </div>
-        </>
     )
 }

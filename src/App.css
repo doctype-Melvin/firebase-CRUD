@@ -9,82 +9,63 @@ html, body, #root {
   font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 }
 
-#main {
+.App {
   min-height: 100vh;
   display: grid;
-  grid-template-columns: 1fr 2fr 2fr;
-  grid-template-rows: .5fr 5fr .5fr;
   grid-template-areas: 
   "header header header"
-  "sidebar fun fun"
+  "sidebar main main"
   "footer footer footer";
+  grid-template-columns: 1fr 2fr 2fr;
+  grid-template-rows: .5fr 5fr .5fr;
 }
 
-#header {
+.header {
   grid-area: header;
-  text-align: center;
 }
 
-#sidebar {
+.sidebar {
   grid-area: sidebar;
 }
 
-#content {
-  grid-area: fun;
-}
-
-#footer {
-  grid-area: footer;
+.main {
+  grid-area: main;
   display: flex;
-  align-items: center;
   justify-content: center;
+  align-items: center;
 }
 
-#footer > a {
-  text-decoration: none;
-  color: black;
+.footer {
+  grid-area: footer;
 }
 
-.buttonControl {
-  display: grid;
-  grid-template-columns: 1fr;
-  grid-template-rows: repeat(2, 1fr);
+.buttons {
+  display: flex;
+  flex-direction: column;
   height: 100%;
 }
 
-.buttonControl > button:hover {
-  cursor: pointer;
+.buttons > button {
+  font-size: 5vh;
+  height: 100%;
 }
 
-#create, #render, #update, #delete {
-  font-size: 3vw;
-}
-
-#content, .formContainer {
+.formCt {
+  height: 100%;
+  width: 75%;
   display: flex;
   justify-content: center;
   align-items: center;
-
 }
 
-.formContainer {
+.formEl {
+  display: flex;
   flex-direction: column;
-  max-width: 15vw;
+  align-items: flex-end;
+  justify-content: center;
 }
 
-.formContainer > label,
-.formContainer > input {
+.formEl > label {
   margin-bottom: 15px;
-}
-
-.formContainer > button {
   font-size: 1vw;
-}
-
-.entry {
-  margin-right: 20px;
-  min-width: 8vw;
-  padding: 10px;
-  background-color: aliceblue;
-  box-shadow: 0 0 5px 1px rgba(187, 187, 187, 0.514);
 }
