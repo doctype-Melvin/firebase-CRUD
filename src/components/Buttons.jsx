@@ -1,5 +1,4 @@
 import React from "react";
-import Entry from "./Entry";
 
 export default function Buttons(props) {
 
@@ -14,14 +13,7 @@ export default function Buttons(props) {
         if (props.entry) props.setEntry(prevState => !prevState)
     }
 
-    const updateData = () => {
-        console.log(props.dataArray)
-        
-    }
-
-    const deleteData = () => {
-        console.log('Delete')
-    }
+    
 
     return (
         <>
@@ -38,20 +30,6 @@ export default function Buttons(props) {
             onClick={renderData}
             >
             Render
-            </button>
-            <button
-            type="button"
-            id="update"
-            onClick={updateData}
-            >
-            Update
-            </button>
-            <button 
-            type="delete"
-            id="delete"
-            onClick={deleteData}
-            >
-            Delete
             </button>
         </div>
         </>

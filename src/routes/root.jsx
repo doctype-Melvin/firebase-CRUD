@@ -11,11 +11,15 @@ export default function Root() {
     const [ entry, setEntry ] = useState(false) // Create entry
     const [ render, setRender ] = useState(false) // Render entries
 
-    const mapper = dataArray.map(item => <Entry
+    const mapper = dataArray.map((item, index) => <Entry
         key={item.id}
+        id={item.id}
+        pos={index}
         field1={item.field1}
         field2={item.field2}
         field3={item.field3}
+        dataArray={dataArray}
+        setDataArray={setDataArray}
         />)
     console.log(mapper)
     return (
@@ -36,7 +40,7 @@ export default function Root() {
                 {entry ? <Form setDataArray={setDataArray} /> : null}
                 {render ? mapper : null}
             </div>
-            <div id="footer">footer</div>
+            <div id="footer">&copy; 2023 <a target="_blank" href="https://www.github.com/doctype-Melvin">doctype-Melvin</a> </div>
         </div>
     )
 }
