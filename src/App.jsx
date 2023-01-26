@@ -6,6 +6,7 @@ import { initializeApp } from "firebase/app";
 import firebaseConfig from './firebaseConfig';
 import { setDoc, doc, collection, addDoc, query, where, getDocs} from 'firebase/firestore';
 import { getFirestore } from 'firebase/firestore';
+import Presentation from './components/Presentation';
 
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app)
@@ -13,7 +14,7 @@ const db = getFirestore(app)
 function App() {
 
   const writeToDB = async (data) => {
-    await addDoc(collection(db, 'data'), {...data})
+    await addDoc(collection(db, 'inputs'), {...data})
     setWrite(prevState => !prevState)
   }
   const [ write, setWrite ] = useState(false)
@@ -21,11 +22,13 @@ function App() {
   const [ get, setGet ] = useState(false)
 
   const getFromDB = async () => {
-    const q = query(collection(db, 'data'))
+    let array = []
+    const q = query(collection(db, 'inputs'))
     const querySnap = await getDocs(q)
     querySnap.forEach((doc) => {
-      console.log(doc.data())
+      array.push(doc.data())
     })
+    return array
   }
 
   return (
@@ -41,7 +44,8 @@ function App() {
         />
       </div>
       <div className='main'>
-        {write ? <Form writeToDb={writeToDB} /> : null}
+        { write ? <Form writeToDb={writeToDB} /> : null }
+        { get ? <Presentation getFromDB={getFromDB} /> : null }
       </div>
       <div className='footer'>Footer</div>
     </div>
