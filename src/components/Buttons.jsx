@@ -6,7 +6,7 @@ export default function Buttons(props) {
     }
 
     const renderData = () => {
-        console.log('Show data!')
+        props.getFromDB()
     }
 
     return (

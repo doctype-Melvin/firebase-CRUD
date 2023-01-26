@@ -18,7 +18,7 @@ export default function Form(props) {
     }
 
     const submit = () => {
-        props.toDb(data)
+        props.writeToDb(data)
     }
 
     return (
