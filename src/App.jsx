@@ -4,22 +4,29 @@ import Buttons from './components/Buttons'
 import Form from './components/Form'
 import { initializeApp } from "firebase/app";
 import firebaseConfig from './firebaseConfig';
-import { setDoc, doc, collection, addDoc, query, where, getDocs} from 'firebase/firestore';
+import { setDoc, doc, collection, addDoc, query, where, getDocs, updateDoc} from 'firebase/firestore';
 import { getFirestore } from 'firebase/firestore';
 import Presentation from './components/Presentation';
 
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app)
 
-function App() {
+export const updaterMethod = async (obj) => {
+  const dataRef = doc(db, "inputs", `${obj.id}` )
+  await updateDoc(dataRef, {
+    ...obj
+  })
+}
+
+export default function App() {
 
   const writeToDB = async (data) => {
     await addDoc(collection(db, 'inputs'), {...data})
     setWrite(prevState => !prevState)
   }
   const [ write, setWrite ] = useState(false)
-
   const [ get, setGet ] = useState(false)
+  
 
   const getFromDB = async () => {
     let array = []
@@ -52,4 +59,4 @@ function App() {
   )
 }
 
-export default App
+// export { App, updaterMethod }
