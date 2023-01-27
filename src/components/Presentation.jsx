@@ -4,14 +4,15 @@ import { useEffect, useState } from "react";
 export default function Presentation(props) {
     const [ dbData, setDbData ] = useState([])
 
-    useEffect(() => {
+    useEffect(() => { // Effect fetches data on render and sets state
        const fetchData = async () => {
         const data = await props.getFromDB()
-        console.log(data)
         setDbData(data)
        }
        fetchData()
     }, [])
+
+    const updateCard = (e) => console.log(e.target.dataset)
 
     const mapper = dbData.map(item => {
     return (
@@ -19,7 +20,12 @@ export default function Presentation(props) {
         <div className="line1">{item.input1}</div>
         <div className="line2">{item.input2}</div>
         <div className="line3">{item.input3}</div>
-        <button type="button">Update</button>
+        <button 
+        type="button"
+        data-id={item.id} 
+        onClick={updateCard}>
+            Update
+        </button>
         <button type="button" className="deleteBtn">Delete</button>
     </div>
     )

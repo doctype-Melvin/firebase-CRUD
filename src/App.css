@@ -89,7 +89,7 @@ html, body, #root {
   height: 100%;
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  grid-template-rows: repeat(auto-fit, minmax(100px, 150px));
+  grid-template-rows: repeat(auto-fit, minmax(100px, 200px));
   gap: 30px;
   padding: 20px 
 }
@@ -102,5 +102,9 @@ html, body, #root {
 
 .line1 {
   font-weight: 600;
-  font-size: 1vw;
+  font-size: 4.5vh;
+}
+
+.line2, .line3 {
+  font-size: 4vh;
 }
