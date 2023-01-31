@@ -102,9 +102,10 @@ html, body, #root {
 
 .line1 {
   font-weight: 600;
-  font-size: 4.5vh;
+  font-size: 1.25vw;
+  margin-bottom: 10px;
 }
 
 .line2, .line3 {
-  font-size: 4vh;
+  font-size: 1vw;
 }

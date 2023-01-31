@@ -11,23 +11,23 @@ import Presentation from './components/Presentation';
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app)
 
-export const updaterMethod = async (obj) => {
-  const dataRef = doc(db, "inputs", `${obj.id}` )
-  await updateDoc(dataRef, {
-    ...obj
-  })
-}
-
 export default function App() {
-
-  const writeToDB = async (data) => {
-    await addDoc(collection(db, 'inputs'), {...data})
-    setWrite(prevState => !prevState)
-  }
+  
   const [ write, setWrite ] = useState(false)
   const [ get, setGet ] = useState(false)
-  
 
+  const logDbData = async () => {
+    const querySnap = await getDocs(collection(db, 'inputs'))
+    querySnap.forEach(doc => console.log(doc.data()))
+}
+
+  // Create new document in DB
+  const writeToDB = async (data) => {
+    await setDoc(doc(db, 'inputs', `${data.id}`), {...data})
+    setWrite(prevState => !prevState)
+  }
+  
+  // Fetch collection from DB
   const getFromDB = async () => {
     let array = []
     const q = query(collection(db, 'inputs'))
@@ -52,7 +52,12 @@ export default function App() {
       </div>
       <div className='main'>
         { write ? <Form writeToDb={writeToDB} /> : null }
-        { get ? <Presentation getFromDB={getFromDB} /> : null }
+        { get ?
+        <Presentation 
+        getFromDB={getFromDB} 
+        db={db} 
+        logDbData={logDbData}
+        /> : null }
       </div>
       <div className='footer'>Footer</div>
     </div>
