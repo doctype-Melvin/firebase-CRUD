@@ -1,10 +1,11 @@
 import React from "react";
 import { useEffect, useState } from "react";
 import { doc, updateDoc, collection, getFirestore, getDocs } from "firebase/firestore"
+import Card from "./Cards";
 
 export default function Presentation(props) {
     const [ dbData, setDbData ] = useState([])
-    
+      
        
     useEffect(() => { // Effect fetches data on render and sets state
        const fetchData = async () => {
@@ -17,19 +18,20 @@ export default function Presentation(props) {
     return (
         <div className="dataRender">
             {/* {dbData.length ? mapper : 'Loading...'} */}
-            {dbData.map(x => {
-            return (
-                
-                <div key={x.id} className="infoCard" data-id={x.id}>
-                    <div className="line1">{x.input1}</div>
-                    <div className="line2">{x.input2}</div>
-                    <div className="line3">{x.input3}</div>
-                    <button data-id={x.id} onClick={(e) => console.log(e.target.dataset.id)}>Edit</button>
-                    <button>Delete</button>
-                </div> 
-                
-                )
-            })}
+            {
+                dbData.map(x => {
+                    return (
+                        <Card
+                        key={x.id}
+                        id={x.id}
+                        line1={x.input1}
+                        line2={x.input2}
+                        line3={x.input3}
+                    />)
+                })
+            }
+        
+        
         </div>
     )
 }

@@ -16,12 +16,8 @@ export default function App() {
   const [ write, setWrite ] = useState(false)
   const [ get, setGet ] = useState(false)
 
-  const logDbData = async () => {
-    const querySnap = await getDocs(collection(db, 'inputs'))
-    querySnap.forEach(doc => console.log(doc.data()))
-}
-
   // Create new document in DB
+  // Receives object
   const writeToDB = async (data) => {
     await setDoc(doc(db, 'inputs', `${data.id}`), {...data})
     setWrite(prevState => !prevState)
@@ -56,8 +52,7 @@ export default function App() {
         <Presentation 
         getFromDB={getFromDB} 
         db={db} 
-        logDbData={logDbData}
-        /> : null }
+       /> : null }
       </div>
       <div className='footer'>Footer</div>
     </div>
