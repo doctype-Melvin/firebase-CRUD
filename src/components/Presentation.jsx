@@ -23,6 +23,8 @@ export default function Presentation(props) {
                     return (
                         <Card
                         key={x.id}
+                        data={dbData}
+                        update={props.updateDocDB}
                         id={x.id}
                         line1={x.input1}
                         line2={x.input2}

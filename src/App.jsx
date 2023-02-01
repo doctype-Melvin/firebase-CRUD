@@ -22,6 +22,15 @@ export default function App() {
     await setDoc(doc(db, 'inputs', `${data.id}`), {...data})
     setWrite(prevState => !prevState)
   }
+
+  // Update document in DB
+  // Receives object
+  const updateDocDB = async (data) => {
+    const docRef = doc(db, 'inputs', `${data.id}`)
+    await updateDoc(docRef, {
+      ...data
+    })
+  }
   
   // Fetch collection from DB
   const getFromDB = async () => {
@@ -50,7 +59,8 @@ export default function App() {
         { write ? <Form writeToDb={writeToDB} /> : null }
         { get ?
         <Presentation 
-        getFromDB={getFromDB} 
+        getFromDB={getFromDB}
+        updateDocDB={updateDocDB}
         db={db} 
        /> : null }
       </div>
