@@ -28,7 +28,6 @@ export default function Card(props) {
     const handleDelete = (id) => {
         props.delete(id)
     }
-
     
     return (
 

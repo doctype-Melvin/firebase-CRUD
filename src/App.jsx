@@ -7,9 +7,10 @@ import firebaseConfig from './firebaseConfig';
 import { setDoc, doc, collection, addDoc, query, where, getDocs, updateDoc, deleteDoc} from 'firebase/firestore';
 import { getFirestore } from 'firebase/firestore';
 import Presentation from './components/Presentation';
+import Header from './components/Header';
 
-const app = initializeApp(firebaseConfig);
-const db = getFirestore(app)
+const app = initializeApp(firebaseConfig); // Init firebase with config
+const db = getFirestore(app) // access the apps database / firestore
 
 export default function App() {
   
@@ -51,7 +52,7 @@ export default function App() {
 
   return (
     <div className="App">
-      <div className='header'>Header</div>
+      <Header />
       <div className='sidebar'>
         <Buttons
         write={write}
@@ -71,7 +72,7 @@ export default function App() {
         db={db} 
        /> : null }
       </div>
-      <div className='footer'>Footer</div>
+      <div className='footer'>&copy; 2023 <a target="_blank" href='https://www.github.com/doctype-Melvin'>doctypeMelvin</a>  </div>
     </div>
   )
 }

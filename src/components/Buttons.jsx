@@ -7,7 +7,6 @@ export default function Buttons(props) {
     }
 
     const renderData = () => {
-        //  props.getFromDB()
         props.setGet(prev => !prev)
         props.write ? props.setWrite(prev => !prev) : null
     }
