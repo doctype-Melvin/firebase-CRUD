@@ -139,11 +139,29 @@ html, body, #root {
   flex-direction: column;
   align-items: flex-end;
   justify-content: center;
+  background-color: var(--lighter-shade);
+  padding: 25px;
+  border-radius: 5px;
+  box-shadow: 0 0 3px 2px rgb(186, 188, 196);
 }
 
 .formEl > label {
   margin-bottom: 15px;
+  font-size: 1.2vw;
+}
+
+.formEl > label > input {
+  margin-left: 5px;
+  font-size: 1.2vw;
+}
+
+.send {
+  background-color: #CA3C25;
+  color: #fff;
+  border: none;
   font-size: 1vw;
+  padding: 5px 10px;
+  border-radius: 5px;
 }
 
 /* Form End */
@@ -155,16 +173,41 @@ html, body, #root {
   height: 100%;
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  grid-template-rows: repeat(auto-fit, minmax(100px, 200px));
+  grid-template-rows: repeat(auto-fit, minmax(110px, 220px));
   gap: 30px;
   padding: 20px 
 }
 
-.infoCard {
+.infoCard, .editCard {
   background-color: var(--lighter-shade);
   box-shadow: 0 0 3px 2px rgb(186, 188, 196);
   padding: 20px;
   border-radius: 15px;
+}
+
+.editCard {
+  display: flex;
+  flex-direction: column;
+}
+
+.editCard > input {
+  margin-bottom: 5px;
+  font-size: 1vw;
+  padding: 5px;
+}
+
+.saveBtn {
+  font-size: 1vw;
+  background-color: var(--main-color);
+  border: none;
+  padding: 5px;
+  border-radius: 5px;
+}
+
+.saveBtn:hover {
+  background-color: var(--contrast);
+  color: #fff;
+  cursor: pointer;
 }
 
 .line1 {

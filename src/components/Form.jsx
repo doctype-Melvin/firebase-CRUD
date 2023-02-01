@@ -24,7 +24,7 @@ export default function Form(props) {
     return (
         <div className="formCt">
             <form className="formEl">
-                <label htmlFor="input1">First: 
+                <label htmlFor="input1">First:
                 <input type="text" name="input1" onChange={changeHandler}></input>
                 </label>
                 <label htmlFor="input1">Second: 

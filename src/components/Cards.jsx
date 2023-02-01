@@ -32,7 +32,7 @@ export default function Card(props) {
     return (
 
        isEdit === props.id ? (
-        <div className="infoCard" data-id={props.id}>
+        <div className="editCard" data-id={props.id}>
             <input type="text" name="input1" placeholder={props.line1} onChange={handleChange}/>
             <input type="text" name="input2" placeholder={props.line2} onChange={handleChange}/>
             <input type="text" name="input3" placeholder={props.line3} onChange={handleChange}/>
