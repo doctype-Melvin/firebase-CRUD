@@ -4,7 +4,7 @@ import Buttons from './components/Buttons'
 import Form from './components/Form'
 import { initializeApp } from "firebase/app";
 import firebaseConfig from './firebaseConfig';
-import { setDoc, doc, collection, addDoc, query, where, getDocs, updateDoc} from 'firebase/firestore';
+import { setDoc, doc, collection, addDoc, query, where, getDocs, updateDoc, deleteDoc} from 'firebase/firestore';
 import { getFirestore } from 'firebase/firestore';
 import Presentation from './components/Presentation';
 
@@ -30,6 +30,12 @@ export default function App() {
     await updateDoc(docRef, {
       ...data
     })
+  }
+
+  // Delete document from DB
+  // Receives obj
+  const deleteDocDB = async (data) => {
+    await deleteDoc(doc(db, 'inputs', `${data}`))
   }
   
   // Fetch collection from DB
@@ -61,6 +67,7 @@ export default function App() {
         <Presentation 
         getFromDB={getFromDB}
         updateDocDB={updateDocDB}
+        deleteDocDB={deleteDocDB}
         db={db} 
        /> : null }
       </div>

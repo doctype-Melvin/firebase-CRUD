@@ -25,6 +25,7 @@ export default function Presentation(props) {
                         key={x.id}
                         data={dbData}
                         update={props.updateDocDB}
+                        delete={props.deleteDocDB}
                         id={x.id}
                         line1={x.input1}
                         line2={x.input2}

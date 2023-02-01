@@ -25,6 +25,10 @@ export default function Card(props) {
         props.update(newData)
     }
 
+    const handleDelete = (id) => {
+        props.delete(id)
+    }
+
     
     return (
 
@@ -41,7 +45,7 @@ export default function Card(props) {
             <div className="line2">{props.line2}</div>
             <div className="line3">{props.line3}</div>
             <button className="editBtn" data-id={props.id} onClick={() => handleEdit(props.id)}>Edit</button>
-            <button className="deleteBtn" >Delete</button>
+            <button className="deleteBtn" data-id={props.id} onClick={(e) => handleDelete(e.target.dataset.id)}>Delete</button>
         </div>
         ) 
         
