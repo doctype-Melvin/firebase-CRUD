@@ -13,7 +13,7 @@ export default function Presentation(props) {
         setDbData(data)
        }
        fetchData()
-    }, [])
+    }, [dbData])
 
     return (
         <div className="dataRender">
